@@ -1,0 +1,52 @@
+---
+# vars file for zabbix_server_apache_mysql
+rpm_repo_package: https://repo.zabbix.com/zabbix/{{ zabbix_major_version }}/rhel/{{ ansible_distribution_major_version }}/x86_64/zabbix-release-{{ zabbix_version }}.el{{ ansible_distribution_major_version }}.noarch.rpm
+debian_repo_package: https://repo.zabbix.com/zabbix/{{ zabbix_major_version }}/debian/pool/main/z/zabbix-release/zabbix-release_{{ zabbix_version }}+debian{{ ansible_distribution_major_version }}_all.deb
+ubuntu_repo_package: https://repo.zabbix.com/zabbix/{{ zabbix_major_version }}/ubuntu/pool/main/z/zabbix-release/zabbix-release_{{ zabbix_version }}+ubuntu{{ ansible_distribution_version }}_all.deb
+rpm_zabbix_server_packages:
+  [
+    "zabbix-server-{{ db_server }}",
+    "zabbix-web-{{ db_server }}",
+    "zabbix-{{ web_server }}-conf",
+    zabbix-sql-scripts,
+    zabbix-selinux-policy,
+    zabbix-agent,
+  ]
+deb_zabbix_server_packages:
+  [
+    "zabbix-server-{{ db_server }}",
+    zabbix-frontend-php,
+    "zabbix-{{ web_server }}-conf",
+    zabbix-sql-scripts,
+    zabbix-agent,
+  ]
+rpm_php_packages:
+  [
+    php,
+    php-bcmath,
+    php-cli,
+    php-curl,
+    php-ldap,
+    php-mysqlnd,
+    php-gd,
+    php-opcache,
+    php-pgsql,
+    php-fpm,
+  ]
+deb_php_packages:
+  [
+    "php{{ php_version }}",
+    "php{{ php_version }}-bcmath",
+    "php{{ php_version }}-cli",
+    "php{{ php_version }}-curl",
+    "php{{ php_version }}-ldap",
+    "php{{ php_version }}-mysqlnd",
+    "php{{ php_version }}-gd",
+    "php{{ php_version }}-opcache",
+    "php{{ php_version }}-pgsql",
+    "php{{ php_version }}-fpm",
+  ]
+rpm_mysql_server_packages: mariadb-server
+deb_mysql_server_packages: [mariadb-server, mariadb-client-compat]
+rpm_apache_server_packages: httpd
+deb_apache_server_packages: [apache2, "libapache2-mod-php{{ php_version }}"]

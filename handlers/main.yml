@@ -1,0 +1,10 @@
+---
+# handlers file for zabbix_server_apache_mysql
+- import_tasks: apache2_service_ctl.yml
+- import_tasks: httpd_service_ctl.yml
+- import_tasks: mysql_service_ctl.yml
+- import_tasks: nginx_service_ctl.yml
+- import_tasks: php-fpm_Debian_service_ctl.yml
+- import_tasks: php-fpm_RedHat_service_ctl.yml
+- import_tasks: zabbix-agent_service_ctl.yml
+- import_tasks: zabbix-server_service_ctl.yml

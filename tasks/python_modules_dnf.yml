@@ -1,0 +1,6 @@
+---
+#RHEL 8 and 9
+- name: Install PyMySQL modules - dnf
+  dnf:
+    name: python3-PyMySQL
+    update_cache: true

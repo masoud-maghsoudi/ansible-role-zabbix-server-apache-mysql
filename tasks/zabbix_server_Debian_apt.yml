@@ -1,0 +1,26 @@
+---
+#Debian and Ubuntu
+- name: Install DB server required packages - apt
+  apt:
+    name: "{{ deb_mysql_server_packages }}"
+    state: present
+    update_cache: true
+
+- name: Install Web Server required packages - apt
+  apt:
+    name: "{{ deb_apache_server_packages }}"
+    state: present
+    update_cache: true
+  when: web_server == 'apache'
+
+- name: Install PHP 8 required packages - apt
+  apt:
+    name: "{{ deb_php_packages }}"
+    state: present
+    update_cache: true
+
+- name: Install zabbix server packages - apt
+  apt:
+    name: "{{ deb_zabbix_server_packages }}"
+    state: present
+    update_cache: true

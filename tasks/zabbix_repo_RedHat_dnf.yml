@@ -1,0 +1,23 @@
+---
+#RHEL 8
+- name: Install zabbix repository - dnf
+  dnf:
+    name: "{{ rpm_repo_package }}"
+    state: present
+    update_cache: true
+    validate_certs: false
+    disable_gpg_check: true
+  when:
+    - ansible_distribution_major_version | int == 8
+
+#RHEL 9
+- name: Install zabbix repository - dnf
+  dnf:
+    name: "{{ rpm_repo_package }}"
+    state: present
+    update_cache: true
+    validate_certs: false
+    disable_gpg_check: true
+    disablerepo: epel
+  when:
+    - ansible_distribution_major_version | int == 9

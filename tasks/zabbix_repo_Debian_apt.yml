@@ -1,0 +1,18 @@
+---
+# Debian Linux
+- name: Install zabbix repository - apt
+  apt:
+    deb: "{{ debian_repo_package }}"
+    state: present
+    update_cache: true
+  when: 
+    - ansible_distribution == 'Debian'
+
+# Ubuntu Linux
+- name: Install zabbix repository - apt
+  apt:
+    deb: "{{ ubuntu_repo_package }}"
+    state: present
+    update_cache: true
+  when: 
+    - ansible_distribution == 'Ubuntu'

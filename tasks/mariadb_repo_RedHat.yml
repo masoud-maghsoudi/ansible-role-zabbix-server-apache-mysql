@@ -1,0 +1,12 @@
+---
+#RHEL
+- name: Add MariaDB 11 repository - dnf
+  yum_repository:
+    name: MariaDB
+    description: MariaDB 11.0 RedHatEnterpriseLinux repository list - $basearch
+    file: mariadb
+    baseurl: https://mirror.netcologne.de/mariadb/yum/11.0/rhel/$releasever/$basearch
+    enabled: true
+    gpgcheck: true
+    module_hotfixes: true
+    gpgkey: https://mirror.netcologne.de/mariadb/yum/RPM-GPG-KEY-MariaDB

@@ -1,0 +1,8 @@
+<VirtualHost *:80>
+    
+    #This part is added to redirect http requests to zabbix server
+    RedirectMatch ^/$ /zabbix/
+
+    DocumentRoot /var/www/html
+
+</VirtualHost>

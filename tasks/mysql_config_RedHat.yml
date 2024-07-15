@@ -1,0 +1,31 @@
+- name: Start and enable mysql server
+  service:
+    name: mariadb
+    state: started
+    enabled: true
+
+- name: Removes all anonymous user accounts - rehdat
+  community.mysql.mysql_user:
+    name: ''
+    login_user: root
+    login_unix_socket: "{{ rpm_mysql_socket }}"
+    host_all: true
+    state: absent
+
+- name: Add zabbix DB user account - rehdat
+  community.mysql.mysql_user:
+    name: "{{ zabbix_db_user }}"
+    password: "{{ zabbix_db_password }}"
+    login_unix_socket: "{{ rpm_mysql_socket }}"
+    state: present
+    priv: "{{ zabbix_db_name }}.*:ALL"
+
+- name: Create and import initial database ans schema for zabbix - rehdat
+  community.mysql.mysql_db:
+    name: "{{ zabbix_db_name }}"
+    encoding: utf8mb4
+    collation: utf8mb4_bin
+    login_unix_socket: "{{ rpm_mysql_socket }}"
+    target: /usr/share/zabbix-sql-scripts/mysql/server.sql.gz
+    force: true
+    state: import

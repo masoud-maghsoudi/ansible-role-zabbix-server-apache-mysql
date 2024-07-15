@@ -1,0 +1,25 @@
+---
+# defaults file for zabbix_server_apache_mysql
+# zabbix versions could be set based on available versions on https://www.zabbix.com/download
+zabbix_major_version: 6.4
+zabbix_version: 6.4-1
+
+web_server: apache
+php_version: 8.2
+# regarding zabbix download page guides on https://www.zabbix.com/download
+# I chose mysql for db_server, but all this role is implemented with mariab
+db_server: mysql
+mariadb_version: 11.0
+# mariadb socket file on debian based distributions
+deb_mysql_socket: /var/run/mysqld/mysqld.sock
+# mariadb socket file on redhat based distributions
+rpm_mysql_socket: /var/lib/mysql/mysql.sock
+# this parameter would be set on title name on front-end and
+# would be dislayed on browser tabe, so you can change it base on your needs
+zabbix_server_name: "Zabbix Server created by Ansbile"
+# zabbix database name in mariadb
+zabbix_db_name: zabbix
+#zabbix database username which its access is restricted on localhost in this role
+zabbix_db_user: zabbix
+# zabbix database user password which is randomly generated
+zabbix_db_password: "{{ lookup('ansible.builtin.password', '/dev/null', seed=inventory_hostname) }}"

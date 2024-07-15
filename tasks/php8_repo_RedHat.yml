@@ -1,0 +1,15 @@
+---
+#Debian and Ubuntu
+- name: Install required repositories for PHP 8 - dnf
+  block:
+    - name: Add repository Remi for PHP 8
+      dnf:
+        name: "http://rpms.remirepo.net/enterprise/remi-release-{{ ansible_distribution_version }}.rpm"
+        state: present
+        disable_gpg_check: yes
+
+    - name: Enable Remi PHP 8 Module for DNF
+      shell: |
+        dnf module reset php -y
+        dnf module enable php:remi-{{ php_version }} -y
+        

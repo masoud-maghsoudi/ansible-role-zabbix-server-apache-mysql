@@ -1,0 +1,37 @@
+---
+#RHEL 8 and 9
+- name: Put SELinux in permissive mode, logging actions that would be blocked.
+  selinux:
+    policy: targeted
+    state: permissive
+
+- name: Install glibc-langpack-en package
+  dnf:
+    name: glibc-langpack-en
+    update_cache: true
+
+- name: Install DB server required packages - dnf
+  dnf:
+    name: "{{ rpm_mysql_server_packages }}"
+    state: present
+    update_cache: true
+
+- name: Install Web Server required packages - dnf
+  dnf:
+    name: "{{ rpm_apache_server_packages }}"
+    state: present
+    update_cache: true
+  when: web_server == 'apache'
+
+- name: Install PHP 8 required packages - dnf
+  dnf:
+    name: "{{ rpm_php_packages }}"
+    state: present
+    update_cache: true
+
+- name: Install zabbix server packages - dnf
+  dnf:
+    name: "{{ rpm_zabbix_server_packages }}"
+    state: present
+    disablerepo: epel
+    update_cache: true
