@@ -1,10 +1,25 @@
 ---
 # handlers file for zabbix_server_apache_mysql
-- ansible.builtin.import_tasks: apache2_service_ctl.yml
-- ansible.builtin.import_tasks: httpd_service_ctl.yml
-- ansible.builtin.import_tasks: mysql_service_ctl.yml
-- ansible.builtin.import_tasks: nginx_service_ctl.yml
-- ansible.builtin.import_tasks: php-fpm_Debian_service_ctl.yml
-- ansible.builtin.import_tasks: php-fpm_RedHat_service_ctl.yml
-- ansible.builtin.import_tasks: zabbix-agent_service_ctl.yml
-- ansible.builtin.import_tasks: zabbix-server_service_ctl.yml
+- name: Service Control apache2
+  ansible.builtin.import_tasks: apache2_service_ctl.yml
+
+- name: Service Control httpd
+  ansible.builtin.import_tasks: httpd_service_ctl.yml
+
+- name: Service Control mysql
+  ansible.builtin.import_tasks: mysql_service_ctl.yml
+
+- name: Service Control nginx
+  ansible.builtin.import_tasks: nginx_service_ctl.yml
+
+- name: Service Control php-fpm-debian
+  ansible.builtin.import_tasks: php-fpm_Debian_service_ctl.yml
+
+- name: Service Control php-fpm-redhat
+  ansible.builtin.import_tasks: php-fpm_RedHat_service_ctl.yml
+
+- name: Service Control zabbix-agent
+  ansible.builtin.import_tasks: zabbix-agent_service_ctl.yml
+
+- name: Service Control zabbix-server
+  ansible.builtin.import_tasks: zabbix-server_service_ctl.yml
