@@ -2,23 +2,23 @@
 # tasks file for zabbix_server
 # Install pythpn modules
 - name: Install Python required modules
-  include_tasks: python_modules_{{ ansible_pkg_mgr }}.yml
+  ansible.builtin.include_tasks: python_modules_{{ ansible_pkg_mgr }}.yml
 
 # Install MariaDB repository
 - name: Install MariaDB repository
-  include_tasks: mariadb_repo_{{ ansible_os_family }}.yml
+  ansible.builtin.include_tasks: mariadb_repo_{{ ansible_os_family }}.yml
 
 # Install PHP 8 repository
 - name: Install PHP repository
-  include_tasks: php8_repo_{{ ansible_os_family }}.yml
+  ansible.builtin.include_tasks: php8_repo_{{ ansible_os_family }}.yml
 
 # Install zabbix repository
 - name: Install Zabbix repository
-  include_tasks: zabbix_repo_{{ ansible_os_family }}_{{ ansible_pkg_mgr }}.yml
+  ansible.builtin.include_tasks: zabbix_repo_{{ ansible_os_family }}_{{ ansible_pkg_mgr }}.yml
 
 # Install Server Packages
 - name: Install DB server, Web server, PHP and Zabbix server packages
-  include_tasks: zabbix_server_{{ ansible_os_family }}_{{ ansible_pkg_mgr }}.yml
+  ansible.builtin.include_tasks: zabbix_server_{{ ansible_os_family }}_{{ ansible_pkg_mgr }}.yml
   when:
     (ansible_os_family == 'RedHat' and ansible_distribution_major_version | int >= 8) or
     (ansible_distribution == 'Debian' and ansible_distribution_major_version | int >= 11) or
@@ -26,8 +26,8 @@
 
 # Configure DB server and add initial data and schema
 - name: DB server configuration
-  include_tasks: mysql_config_{{ ansible_os_family }}.yml
+  ansible.builtin.include_tasks: mysql_config_{{ ansible_os_family }}.yml
 
 # configure Zabbix server and frontend
 - name: Zabbix server configurations
-  include_tasks: zabbix_config_{{ ansible_os_family }}.yml
+  ansible.builtin.include_tasks: zabbix_config_{{ ansible_os_family }}.yml

@@ -8,5 +8,5 @@
         dest: /etc/apt/trusted.gpg.d/mairadb-repo.gpg
     - name: Add mariadb repository - apt
       apt_repository:
-        repo: "deb https://mirror.netcologne.de/mariadb/repo/{{ mariadb_version }}/{{ ansible_distribution|lower }} {{ ansible_distribution_release }} main main/debug"
+        repo: "deb https://mirror.netcologne.de/mariadb/repo/{{ mariadb_version }}/{{ ansible_distribution | lower }} {{ ansible_distribution_release }} main main/debug"
         state: present
