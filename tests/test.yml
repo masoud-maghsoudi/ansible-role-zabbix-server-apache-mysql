@@ -2,5 +2,5 @@
 - hosts: localhost
   remote_user: root
   connection: local
-  ansible.builtin.import_tasks:
+  ansible.builtin.include_tasks:
     - tasks/main.yml
