@@ -17,19 +17,20 @@ In required cases, it is recommended to change parameters with respect to guidel
 
 None.
 
+## Galaxy
+
+In order to install this role from ansible galaxy you can use command below:
+
+    ansible-galaxy role install masoud-maghsoudi.zabbix-server-apache-mysql
+
 ## Example Playbook
 
 It is recommended not to pass any variable to role, instead you can modify package versions in defaults/main.yml with respesct to [zabbix](https://www.zabbix.com/download) official website.
 
-    - hosts: new-servers
+    - hosts: all
+      gather_facts: true
       roles:
-         - zabbix-server-apache-mysql
-
-## Galaxy
-
-In order to install this role from ansible galaxy you could use command below:
-
-    ansible-galaxy role install masoud-maghsoudi.zabbix-server-apache-mysql
+         - masoud-maghsoudi.zabbix-server-apache-mysql
 
 ## License
 
