@@ -1,0 +1,33 @@
+---
+# .github/workflows/ansible-lint.yml
+name: Galaxy-NG Roles Import
+on:
+  push:
+    branches: ["main"]
+
+jobs:
+  lint:
+    name: Ansible Lint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install required ansible collections
+        run: ansible-galaxy install -r requirements.yml # Install required collections to resolve related warnings on ansible-lint
+      - name: Run ansible-lint
+        uses: ansible/ansible-lint@main
+
+  galaxy:
+    name: Galaxy Role Importer
+    needs: lint
+    runs-on: ubuntu-latest
+    steps:
+      - name: 'Checkout git repo'
+        uses: actions/checkout@v4
+        with:
+          submodules: true
+          fetch-depth: 0
+
+      - name: 'Release on galaxy'
+        uses: ansible-actions/ansible-galaxy-action@v1.2.0
+        with:
+          galaxy_api_key: ${{ secrets.GALAXY_API_KEY }}
