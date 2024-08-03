@@ -1,7 +1,7 @@
 ---
 # Debian Linux
 - name: Install zabbix repository - apt
-  apt:
+  ansible.builtin.apt:
     deb: "{{ debian_repo_package }}"
     state: present
     update_cache: true
@@ -10,7 +10,7 @@
 
 # Ubuntu Linux
 - name: Install zabbix repository - apt
-  apt:
+  ansible.builtin.apt:
     deb: "{{ ubuntu_repo_package }}"
     state: present
     update_cache: true

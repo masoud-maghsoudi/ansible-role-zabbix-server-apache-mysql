@@ -1,7 +1,7 @@
 ---
-#RHEL 8
+# RHEL 8
 - name: Install zabbix repository - dnf
-  dnf:
+  ansible.builtin.dnf:
     name: "{{ rpm_repo_package }}"
     state: present
     update_cache: true
@@ -10,9 +10,9 @@
   when:
     - ansible_distribution_major_version | int == 8
 
-#RHEL 9
+# RHEL 9
 - name: Install zabbix repository - dnf
-  dnf:
+  ansible.builtin.dnf:
     name: "{{ rpm_repo_package }}"
     state: present
     update_cache: true

@@ -1,6 +1,6 @@
 ---
-#Debian and Ubuntu
+# Debian and Ubuntu
 - name: Install pymysql module - apt
-  apt:
+  ansible.builtin.apt:
     name: python3-pymysql
     update_cache: true

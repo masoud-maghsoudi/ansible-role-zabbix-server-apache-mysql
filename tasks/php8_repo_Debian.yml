@@ -1,9 +1,9 @@
 ---
-#Debian and Ubuntu
+# Debian and Ubuntu
 - name: Install required repositories for PHP 8 - apt
   block:
     - name: Add repository ondrej/php for PHP 8
-      apt_repository:
+      ansible.builtin.apt_repository:
         repo: ppa:ondrej/php
       when: ansible_distribution == 'Ubuntu'
 
@@ -14,7 +14,7 @@
             url: https://packages.sury.org/php/apt.gpg
             dest: /etc/apt/trusted.gpg.d/sury-repo.gpg
         - name: Add repository SURY for php8.2 Plugins
-          apt_repository:
+          ansible.builtin.apt_repository:
             repo: "deb https://packages.sury.org/php/ {{ ansible_distribution_release }} main"
             state: present
       when: ansible_distribution == 'Debian'

@@ -20,7 +20,7 @@ galaxy_info:
         - focal
         - jammy
   galaxy_tags:
-    - zabbix_server
+    - zabbix
     - linux
     - redhat
     - ol
