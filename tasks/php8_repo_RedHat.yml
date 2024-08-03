@@ -6,10 +6,9 @@
       ansible.builtin.dnf:
         name: "http://rpms.remirepo.net/enterprise/remi-release-{{ ansible_distribution_version }}.rpm"
         state: present
-        disable_gpg_check: yes
+        disable_gpg_check: true
 
     - name: Enable Remi PHP 8 Module for DNF
       ansible.builtin.shell: |
         dnf module reset php -y
         dnf module enable php:remi-{{ php_version }} -y
-        

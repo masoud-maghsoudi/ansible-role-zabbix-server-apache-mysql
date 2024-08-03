@@ -8,13 +8,14 @@
       when: ansible_distribution == 'Ubuntu'
 
     - name: Add repository SURY for PHP 8
+      when: ansible_distribution == 'Debian'
       block:
         - name: Add repository SURY GPG keys
-          get_url:
+          ansible.builtin.get_url:
             url: https://packages.sury.org/php/apt.gpg
             dest: /etc/apt/trusted.gpg.d/sury-repo.gpg
+            mode: "0644"
         - name: Add repository SURY for php8.2 Plugins
           ansible.builtin.apt_repository:
             repo: "deb https://packages.sury.org/php/ {{ ansible_distribution_release }} main"
             state: present
-      when: ansible_distribution == 'Debian'
