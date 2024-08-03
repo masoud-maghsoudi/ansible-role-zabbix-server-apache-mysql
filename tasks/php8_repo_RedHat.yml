@@ -12,5 +12,5 @@
       ansible.builtin.shell: |
         dnf module reset php -y
         dnf module enable php:remi-{{ php_version }} -y
-      register: dnf-remi-module-output # <- Registers the command output.
-      changed_when: dnf-remi-module-output.rc != 0 # <- Uses the return code to define when the task has changed.
+      register: dnf_remi_module_output # <- Registers the command output.
+      changed_when: dnf_remi_module_output.rc != 0 # <- Uses the return code to define when the task has changed.
