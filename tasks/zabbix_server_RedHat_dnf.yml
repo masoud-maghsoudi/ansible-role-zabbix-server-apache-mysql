@@ -1,7 +1,7 @@
 ---
 # RHEL 8 and 9
 - name: Put SELinux in permissive mode, logging actions that would be blocked.
-  ansible.builtin.selinux:
+  ansible.posix.selinux:
     policy: targeted
     state: permissive
 
