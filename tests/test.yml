@@ -2,5 +2,5 @@
 - hosts: localhost
   remote_user: root
   connection: local
-  ansible.builtin.include_tasks:
-    - tasks/main.yml
+  roles:
+    - ansible-role-zabbix-server-apache-mysql
