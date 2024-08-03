@@ -1,7 +1,7 @@
 ---
-#RHEL
+# RHEL
 - name: Add MariaDB 11 repository - dnf
-  yum_repository:
+  ansible.builtin.yum_repository:
     name: MariaDB
     description: MariaDB 11.0 RedHatEnterpriseLinux repository list - $basearch
     file: mariadb

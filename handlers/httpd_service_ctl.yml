@@ -1,18 +1,18 @@
 ---
-- name: httpd start
-  service:
+- name: Service httpd start
+  ansible.builtin.service:
     name: httpd
     state: started
     enabled: true
 
-- name: httpd stop
-  service:
+- name: Service httpd stop
+  ansible.builtin.service:
     name: httpd
     state: stopped
     enabled: false
 
-- name: httpd restart
-  service:
+- name: Service httpd restart
+  ansible.builtin.service:
     name: httpd
     state: restarted
     enabled: true

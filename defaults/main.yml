@@ -19,7 +19,7 @@ rpm_mysql_socket: /var/lib/mysql/mysql.sock
 zabbix_server_name: "Zabbix Server created by Ansbile"
 # zabbix database name in mariadb
 zabbix_db_name: zabbix
-#zabbix database username which its access is restricted on localhost in this role
+# zabbix database username which its access is restricted on localhost in this role
 zabbix_db_user: zabbix
 # zabbix database user password which is randomly generated
 zabbix_db_password: "{{ lookup('ansible.builtin.password', '/dev/null', seed=inventory_hostname) }}"

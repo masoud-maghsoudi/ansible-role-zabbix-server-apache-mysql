@@ -1,5 +1,5 @@
 - name: Start and enable mysql server
-  service:
+  ansible.builtin.service:
     name: mariadb
     state: started
     enabled: true

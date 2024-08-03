@@ -1,18 +1,18 @@
 ---
-- name: php-fpm start
-  service:
+- name: Service php-fpm start
+  ansible.builtin.service:
     name: php-fpm
     state: started
     enabled: true
 
-- name: php-fpm stop
-  service:
+- name: Service php-fpm stop
+  ansible.builtin.service:
     name: php-fpm
     state: stopped
     enabled: false
 
-- name: php-fpm restart
-  service:
+- name: Service php-fpm restart
+  ansible.builtin.service:
     name: php-fpm
     state: restarted
     enabled: true

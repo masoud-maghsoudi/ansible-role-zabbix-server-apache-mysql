@@ -1,18 +1,18 @@
 ---
-- name: apache2 start
-  service:
+- name: Service apache2 start
+  ansible.builtin.service:
     name: apache2
     state: started
     enabled: true
 
-- name: apache2 stop
-  service:
+- name: Service apache2 stop
+  ansible.builtin.service:
     name: apache2
     state: stopped
     enabled: false
 
-- name: apache2 restart
-  service:
+- name: Service apache2 restart
+  ansible.builtin.service:
     name: apache2
     state: restarted
     enabled: true

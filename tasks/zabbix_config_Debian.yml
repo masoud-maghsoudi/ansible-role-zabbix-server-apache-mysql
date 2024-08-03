@@ -1,5 +1,5 @@
 - name: Set zabbix server configurations
-  template:
+  ansible.builtin.template:
     src: templates/zabbix_server.conf.j2
     dest: /etc/zabbix/zabbix_server.conf
     backup: true
@@ -9,7 +9,7 @@
     - zabbix-agent restart
 
 - name: Set Zabbix frontend configurations
-  template:
+  ansible.builtin.template:
     src: "{{ item.src }}"
     dest: "{{ item.dst }}"
     backup: true
