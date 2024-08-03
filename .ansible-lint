@@ -1,0 +1,9 @@
+exclude_paths:
+  - .ansible-lint
+  - .github/
+  - README.md
+  - LICENSE
+
+skip_list:
+  - package-latest
+  - role-name
