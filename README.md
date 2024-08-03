@@ -1,4 +1,4 @@
-# zabbix_server_apache_mysql
+# zabbix-server-apache-mysql
 
 This role installs zabbix server on a liunx machine.
 
@@ -23,7 +23,13 @@ It is recommended not to pass any variable to role, instead you can modify packa
 
     - hosts: new-servers
       roles:
-         - zabbix_server_apache_mysql
+         - zabbix-server-apache-mysql
+
+## Galaxy
+
+In order to install this role from ansible galaxy you could use command below:
+
+    ansible-galaxy role install masoud-maghsoudi.zabbix-server-apache-mysql
 
 ## License
 
